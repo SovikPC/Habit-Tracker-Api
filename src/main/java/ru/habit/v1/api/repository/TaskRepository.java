@@ -6,4 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import ru.habit.v1.api.entity.TaskEntity;
 
-public interface TaskRepository extends JpaRepository<UUID, TaskEntity>{}
+public interface TaskRepository extends JpaRepository<TaskEntity, UUID>{}
