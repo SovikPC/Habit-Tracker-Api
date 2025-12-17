@@ -1,6 +1,7 @@
 package ru.habit.v1.api.util;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -61,6 +62,26 @@ public class MapperUtil {
             mapComplexityDto(entity.getComplexity()),
             mapTagDto(entity.getTag())
         );
+    }
+
+    public Optional<ComplexityDto> mapOptionalComplexityDto(Optional<ComplexityEntity> entity){
+        return entity.map(this::mapComplexityDto);
+    }
+
+    public Optional<TagDto> mapOptionalTagDto(Optional<TagEntity> entity){
+        return entity.map(this::mapTagDto);
+    }
+
+    public Optional<DailyDto> mapOptionalDailyDto(Optional<DailyEntity> entity){
+        return entity.map(this::mapDailyDto);
+    }
+
+    public Optional<TaskDto> mapOptionalTaskDto(Optional<TaskEntity> entity){
+        return entity.map(this::mapTaskDto);
+    }
+
+    public Optional<HabitDto> mapOptionalHabitDto(Optional<HabitEntity> entity){
+        return entity.map(this::mapHabitDto);
     }
 
     public ComplexityEntity mapComplexityEntity(ComplexityDto dto){
