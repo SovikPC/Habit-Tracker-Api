@@ -6,16 +6,16 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import ru.habit.v1.api.dto.ComplexityDto;
-import ru.habit.v1.api.dto.DailyDto;
-import ru.habit.v1.api.dto.HabitDto;
-import ru.habit.v1.api.dto.TagDto;
-import ru.habit.v1.api.dto.TaskDto;
-import ru.habit.v1.api.entity.ComplexityEntity;
-import ru.habit.v1.api.entity.DailyEntity;
-import ru.habit.v1.api.entity.HabitEntity;
-import ru.habit.v1.api.entity.TagEntity;
-import ru.habit.v1.api.entity.TaskEntity;
+import ru.habit.v1.api.model.dto.ComplexityDto;
+import ru.habit.v1.api.model.dto.DailyDto;
+import ru.habit.v1.api.model.dto.HabitDto;
+import ru.habit.v1.api.model.dto.TagDto;
+import ru.habit.v1.api.model.dto.TaskDto;
+import ru.habit.v1.api.model.entity.ComplexityEntity;
+import ru.habit.v1.api.model.entity.DailyEntity;
+import ru.habit.v1.api.model.entity.HabitEntity;
+import ru.habit.v1.api.model.entity.TagEntity;
+import ru.habit.v1.api.model.entity.TaskEntity;
 
 @Component
 public class MapperUtil {
@@ -40,7 +40,7 @@ public class MapperUtil {
             entity.getDailyName(),
             entity.getDailyDescription(),
             mapComplexityDto(entity.getComplexity()),
-            mapTagDto(entity.getTag())
+            mapListTagDto(entity.getTag())
         );
     }
 
@@ -50,7 +50,7 @@ public class MapperUtil {
             entity.getHabitName(),
             entity.getHabitDescription(),
             mapComplexityDto(entity.getComplexity()),
-            mapTagDto(entity.getTag())
+            mapListTagDto(entity.getTag())
         );
     }
 
@@ -60,7 +60,7 @@ public class MapperUtil {
             entity.getTaskName(),
             entity.getTaskDescription(),
             mapComplexityDto(entity.getComplexity()),
-            mapTagDto(entity.getTag())
+            mapListTagDto(entity.getTag())
         );
     }
 
@@ -104,7 +104,7 @@ public class MapperUtil {
             dto.getDailyName(),
             dto.getDailyDescription(),
             mapComplexityEntity(dto.getComplexity()),
-            mapTagEntity(dto.getTag())
+            mapListTagEntity(dto.getTag())
         );
     }
 
@@ -114,7 +114,7 @@ public class MapperUtil {
             dto.getHabitName(),
             dto.getHabitDescription(),
             mapComplexityEntity(dto.getComplexity()),
-            mapTagEntity(dto.getTag())
+            mapListTagEntity(dto.getTag())
         );
     }
 
@@ -124,8 +124,28 @@ public class MapperUtil {
             entity.getTaskName(),
             entity.getTaskDescription(),
             mapComplexityEntity(entity.getComplexity()),
-            mapTagEntity(entity.getTag())
+            mapListTagEntity(entity.getTag())
         );
+    }
+
+    public List<ComplexityEntity> mapListComplexityEntity(List<ComplexityDto> list){
+        return list.stream().map(this::mapComplexityEntity).collect(Collectors.toList());
+    }
+
+    public List<TagEntity> mapListTagEntity(List<TagDto> list){
+        return list.stream().map(this::mapTagEntity).collect(Collectors.toList());
+    }
+
+    public List<DailyEntity> mapListDailyEntity(List<DailyDto> list){
+        return list.stream().map(this::mapDailyEntity).collect(Collectors.toList());
+    }
+
+    public List<HabitEntity> mapListHabitEntity(List<HabitDto> list){
+        return list.stream().map(this::mapHabitEntity).collect(Collectors.toList());
+    }
+
+    public List<TaskEntity> mapListTaskEntity(List<TaskDto> list){
+        return list.stream().map(this::mapTaskEntity).collect(Collectors.toList());
     }
 
     public List<ComplexityDto> mapListComplexityDto(List<ComplexityEntity> list){
