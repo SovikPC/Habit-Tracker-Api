@@ -4,6 +4,6 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ru.habit.v1.api.entity.DailyEntity;
+import ru.habit.v1.api.model.entity.DailyEntity;
 
 public interface DailyRepository extends JpaRepository<DailyEntity, UUID>{}

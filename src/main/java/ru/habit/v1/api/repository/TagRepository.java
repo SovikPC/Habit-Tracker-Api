@@ -4,6 +4,6 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ru.habit.v1.api.entity.TagEntity;
+import ru.habit.v1.api.model.entity.TagEntity;
 
 public interface TagRepository extends JpaRepository<TagEntity, UUID>{}
