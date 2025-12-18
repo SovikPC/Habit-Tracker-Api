@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import ru.habit.v1.api.dto.HabitDto;
+import ru.habit.v1.api.model.Result;
+import ru.habit.v1.api.model.dto.HabitDto;
 
 public interface HabitService {
 
-    public List<HabitDto> findAllHabit();
+    public Result<List<HabitDto>> findAllHabit();
 
     public Optional<HabitDto> findByIdHabit(UUID id);
 

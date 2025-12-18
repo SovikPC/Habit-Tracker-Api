@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import ru.habit.v1.api.dto.TaskDto;
+import ru.habit.v1.api.model.Result;
+import ru.habit.v1.api.model.dto.TaskDto;
 
 public interface TaskService {
 
-    public List<TaskDto> findAllTask();
+    public Result<List<TaskDto>> findAllTask();
 
     public Optional<TaskDto> findByIdTask(UUID id);
 

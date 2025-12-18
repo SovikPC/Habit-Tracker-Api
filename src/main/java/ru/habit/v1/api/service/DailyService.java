@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import ru.habit.v1.api.dto.DailyDto;
+import ru.habit.v1.api.model.Result;
+import ru.habit.v1.api.model.dto.DailyDto;
 
 public interface DailyService {
 
-    public List<DailyDto> findAllDaily();
+    public Result<List<DailyDto>> findAllDaily();
 
     public Optional<DailyDto> findByIdDaily(UUID id);
 

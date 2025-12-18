@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import ru.habit.v1.api.dto.TagDto;
+import ru.habit.v1.api.model.Result;
+import ru.habit.v1.api.model.dto.TagDto;
 
 public interface TagService {
 
-    public List<TagDto> findAllTag();
+    public Result<List<TagDto>> findAllTag();
 
     public Optional<TagDto> findByIdTag(UUID id);
 

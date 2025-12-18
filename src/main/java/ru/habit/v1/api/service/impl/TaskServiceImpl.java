@@ -7,7 +7,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ru.habit.v1.api.dto.TaskDto;
+import ru.habit.v1.api.model.Result;
+import ru.habit.v1.api.model.dto.TaskDto;
 import ru.habit.v1.api.repository.TaskRepository;
 import ru.habit.v1.api.service.TaskService;
 import ru.habit.v1.api.util.MapperUtil;
@@ -21,8 +22,12 @@ public class TaskServiceImpl implements TaskService{
     private MapperUtil map;
 
     @Override
-    public List<TaskDto> findAllTask() {
-        return map.mapListTaskDto(repository.findAll());
+    public Result<List<TaskDto>> findAllTask() {
+        try{
+            return Result.success(map.mapListTaskDto(repository.findAll()));
+        }catch(Exception e){
+            return Result.error(e.getMessage());
+        }
     }
 
     @Override
