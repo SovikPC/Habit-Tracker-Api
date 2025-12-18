@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ru.habit.v1.api.dto.DailyDto;
+import ru.habit.v1.api.model.Result;
+import ru.habit.v1.api.model.dto.DailyDto;
 import ru.habit.v1.api.service.DailyService;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -31,7 +32,7 @@ public class DailyController {
     private DailyService service;
 
     @GetMapping("all")
-    public ResponseEntity<List<DailyDto>> getAllDaily() {
+    public ResponseEntity<Result<List<DailyDto>>> getAllDaily() {
         return new ResponseEntity<>(service.findAllDaily(), HttpStatus.OK);
     }
 
