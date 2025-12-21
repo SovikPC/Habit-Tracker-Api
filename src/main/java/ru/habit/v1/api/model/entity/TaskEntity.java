@@ -24,16 +24,17 @@ public class TaskEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "complexityId", unique = false)
     private ComplexityEntity complexity;
-    @OneToMany
+    // @OneToMany(mappedBy = "tagId", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tagId", unique = false)
-    private List<TagEntity> tag;
+    private List<TagEntity> tags;
 
-    public TaskEntity(UUID id, String taskName, String taskDescription, ComplexityEntity complexity, List<TagEntity> tag) {
+    public TaskEntity(UUID id, String taskName, String taskDescription, ComplexityEntity complexity, List<TagEntity> tags) {
         this.id = id;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.complexity = complexity;
-        this.tag = tag;
+        this.tags = tags;
     }
 
     public UUID getId() {
@@ -69,10 +70,10 @@ public class TaskEntity {
     }
 
     public List<TagEntity> getTag() {
-        return tag;
+        return tags;
     }
 
-    public void setTag(List<TagEntity> tag) {
-        this.tag = tag;
+    public void setTag(List<TagEntity> tags) {
+        this.tags = tags;
     }
 }

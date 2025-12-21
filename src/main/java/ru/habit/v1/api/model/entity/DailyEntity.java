@@ -22,7 +22,8 @@ public class DailyEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "complexityId", unique = false)
     private ComplexityEntity complexity;
-    @OneToMany
+    // @OneToMany
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tagId", unique = false)
     private List<TagEntity> tag;
 

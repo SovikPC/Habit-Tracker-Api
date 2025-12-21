@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class DailyDto {
 
-    private UUID id;
+    private UUID id = UUID.randomUUID();
     private String dailyName;
     private String dailyDescription;
     private ComplexityDto complexity;

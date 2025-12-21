@@ -2,13 +2,21 @@ package ru.habit.v1.api.model.dto;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class TagDto {
     
-    private UUID tagId;
+    private UUID tagId = null;
     private String tagName;
 
     public TagDto(UUID id, String tagName) {
         this.tagId = id;
+        this.tagName = tagName;
+    }
+
+    @JsonCreator
+    public TagDto(@JsonProperty("tagName") String tagName){
         this.tagName = tagName;
     }
 
