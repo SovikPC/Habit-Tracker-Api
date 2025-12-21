@@ -6,12 +6,12 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.habit.v1.api.model.Result;
 import ru.habit.v1.api.model.dto.TagDto;
 import ru.habit.v1.api.service.TagService;
-import org.springframework.web.bind.annotation.PutMapping;
 
 
 
@@ -46,21 +45,21 @@ public class TagController {
     }
 
     @PostMapping("create")
-    public ResponseEntity<TagDto> postTag(@RequestBody TagDto dto) {
-        service.createTag(dto);
-        return new ResponseEntity<>(dto, HttpStatus.CREATED);
+    public ResponseEntity<Void> postTag(@RequestBody TagDto dto) {
+        service.saveTag(dto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TagDto> putTag(@PathVariable UUID id, @RequestBody TagDto dto) {
-        service.updateTag(id,dto);
-        return new ResponseEntity<TagDto>(dto, HttpStatus.OK);
+    public ResponseEntity<Void> putTag(@PathVariable UUID id, @RequestBody TagDto dto) {
+        service.updateTag(id, dto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<> deleteTag(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteTag(@PathVariable UUID id) {
         service.deleteTag(id);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
