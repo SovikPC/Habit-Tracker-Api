@@ -18,7 +18,7 @@ public class TagServiceImpl implements TagService{
 
     @Autowired
     private TagRepository repository;
-
+    @Autowired
     private MapperUtil map;
 
     @Override
@@ -41,13 +41,14 @@ public class TagServiceImpl implements TagService{
     }
 
     @Override
-    public void updateTag(TagDto tag) {
-        repository.save(map.mapTagEntity(tag));
+    public void updateTag(UUID id, TagDto tag) {
+        // Optional<TagDto> dto = findByIdTag(id);
+        // repository.save(dto);
     }
 
     @Override
-    public void deleteTag(TagDto tag) {
-        repository.delete(map.mapTagEntity(tag));
+    public void deleteTag(UUID id) {
+        repository.deleteById(id);
     }
 
     

@@ -15,7 +15,7 @@ public interface TagService {
 
     public void createTag(TagDto tag);
 
-    public void updateTag(TagDto tag);
+    public void updateTag(UUID id, TagDto tag);
 
-    public void deleteTag(TagDto tag);
+    public void deleteTag(UUID id);
 }
