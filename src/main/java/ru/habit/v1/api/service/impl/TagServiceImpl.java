@@ -36,14 +36,20 @@ public class TagServiceImpl implements TagService{
     }
 
     @Override
-    public void createTag(TagDto tag) {
+    public void saveTag(TagDto tag) {
         repository.save(map.mapTagEntity(tag));
     }
 
     @Override
-    public void updateTag(UUID id, TagDto tag) {
-        // Optional<TagDto> dto = findByIdTag(id);
-        // repository.save(dto);
+    public void updateTag(UUID id, TagDto dto){
+        Optional<TagDto> oldDto = findByIdTag(id);
+        if(oldDto != null){
+            oldDto.map(old ->{
+                old.setTagName(dto.getTagName());
+                return old;
+            });
+            saveTag(oldDto.get());
+        }
     }
 
     @Override
