@@ -13,9 +13,9 @@ public interface TagService {
 
     public Optional<TagDto> findByIdTag(UUID id);
 
-    public void createTag(TagDto tag);
+    public void saveTag(TagDto tag);
 
-    public void updateTag(UUID id, TagDto tag);
+    public void updateTag(UUID id, TagDto dto);
 
     public void deleteTag(UUID id);
 }
